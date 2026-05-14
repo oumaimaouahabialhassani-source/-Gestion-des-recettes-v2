@@ -1,0 +1,49 @@
+<?php
+require 'db.php';
+
+$products = $pdo->query("SELECT * FROM products");
+?>
+
+<h2>Gestion Restaurant</h2>
+
+<a href="add.php">Ajouter Plat</a>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prix</th>
+    <th>Quantité</th>
+    <th>Actions</th>
+</tr>
+
+<?php foreach($products as $product) { ?>
+
+<tr>
+
+<td><?= $product['id'] ?></td>
+
+<td><?= $product['name'] ?></td>
+
+<td><?= $product['price'] ?> DH</td>
+
+<td><?= $product['quantity'] ?></td>
+
+<td>
+
+<a href="edit.php?id=<?= $product['id'] ?>">
+Modifier
+</a>
+
+<a href="delete.php?id=<?= $product['id'] ?>">
+Supprimer
+</a>
+
+</td>
+
+</tr>
+
+<?php } ?>
+
+</table>
